@@ -1,0 +1,21 @@
+{% extends 'store/leyouts/main.html' %}
+
+{% block content %}
+    {% include 'store/inc/slider.html' %}
+     
+     {% for messsage in messsages %}
+     <div class="alert alert-{{ messsage.tags }} alert-dismissible fade show" role="alert">
+     <strong>Messsage:</strong> {{ messsage }}
+     <button type="button" class="close" data-dismiss="alert" aria-label="close">
+     <span aria-hidden="true">&times;</span>
+     </button>
+     </div>
+     {% endfor %}
+
+     {% if user.is_authenticated %}
+     <h3>hello{{ fname }}</h3>
+     <h4>you are suuccesfully logedin</h4>
+     <button type="submit"><a href="/store/signout">signout</a></button>
+     {% endif %}
+{% endblock content %}
+    

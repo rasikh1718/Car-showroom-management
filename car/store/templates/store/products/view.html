@@ -1,0 +1,33 @@
+{% extends 'store/leyouts/main.html' %}
+
+{% block content %}
+<div class="py-3 bg-primary">
+  <div class="container-1">
+    <nav>
+      <a class="text-white"  style="text-decoration: none;"  href="{% url 'home' %}">Home /</a> 
+      <a class="text-white" style="text-decoration: none;"  href="{% url 'company' %}">Company</a>
+      <a class="text-white" style="text-decoration: none;"  href="{% url 'signup' %}">Signup</a>
+    </nav>
+  </div>
+</div>
+<div class="container">
+     <div class="row">
+          <div class="col-md-12">
+            <br><h1>{{ products.company }}</h1><hr>
+               <div class="row">
+
+               </div>
+          </div>
+     </div>
+</div>
+<style>
+  .container-1{
+        text-indent: 15px;
+        text-align-last: left;
+        padding-right: 4px;
+      
+    
+}
+</style>
+
+{% endblock content %}

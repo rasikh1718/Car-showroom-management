@@ -1,0 +1,86 @@
+{% extends 'store/leyouts/main.html' %}
+
+{% block content %}
+<div class="py-3 bg-primary">
+  <div class="container-1">
+    <nav>
+      <a class="text-white"  style="text-decoration: none;"  href="{% url 'home' %}">Home /</a> 
+      <a class="text-white" style="text-decoration: none;"  href="{% url 'company' %}">Company</a>
+      <a class="text-white" style="text-decoration: none;"  href="{% url 'signup' %}">signup</a>
+      <a class="text-white" style="text-decoration: none;"  href="{% url 'signin' %}">signin</a>
+
+    </nav>
+  </div>
+</div>
+<div class="container">
+     <div class="row">
+          <div class="col-md-12">
+               <br>
+               <h3 class="title-1">{{ products.company }} Cars List</h3>
+               <hr>
+               {% for item in products %}
+                  <div class="row">
+                    <div class="col-md-3">
+                        <div class="card">
+                          <a href="#" style="text-decoration: none;">
+                             <div class="card-body" >
+                               <div class="company-image">
+                                 <img src="{{ item.product_image.url }}" alt="product image" class="w-100"/>
+                              </div>
+                              <h4 class="text-center"> {{ item.name }} </h4>
+                                  <div class="info">
+                                  <div><span style="color: red; "> Starting Price :</span>
+                                      <span>{{ item.price |stringformat:'d' }}</span>
+                                   </div>
+                                   <div>
+                                      <span style="color: red;">Engine : </span>
+                                      <span>{{ item.engine }}</span>
+                                  </div>
+                                  <div>
+                                    <span style="color: red;">Car Type : </span>
+                                    <span>{{ item.cartype }}</span>
+                                  </div>
+                                  <div>
+                                    <span style="color: red;">Fuel Type : </span>
+                                    <span>{{ item.fuel }}</span>
+                                  </div>
+                                  </div>
+                              </div>
+                          </a>
+                        </div>
+                    </div>
+                 </div>
+               {% endfor %}
+          </div>
+     </div>
+</div>
+<style>
+  .container-1{
+        /* border: 2px solid saddlebrown; */
+        text-indent: 15px;
+        text-align-last: left;
+        padding-right: 4px;
+}
+.card{
+  margin-bottom: 8px;
+  width: 360%;
+  border: 2px solid rgb(23, 88, 88);
+  background-color: rgb(234, 252, 252);
+}
+.title-1{
+  color:rgb(23, 88, 88);
+}
+.text-center{
+  padding-top: 10px;
+  color:rgb(23, 88, 88);
+  font-weight: bold;
+  
+}
+.info{
+  color:rgb(23, 88, 88);
+  font-weight: bold;
+  text-align: center;
+}
+</style>
+
+{% endblock content %}

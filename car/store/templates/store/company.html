@@ -1,0 +1,140 @@
+{% extends 'store/leyouts/main.html' %}
+
+{% block content %}
+
+<div class="container">
+     <div class="row-1">
+          <div class="col-md-12">
+               <br>
+               <h1 class="text-title">Search New Cars By Brand :</h1>
+               <hr>
+                  <div class="row">
+                    {% for item in company %}
+                    <div class="col-md-3">
+                        <div class= "card">
+                          <a href="{% url 'companyview' item.slug %}" style="text-decoration: none; color: rgb(5, 92, 92)">
+                            <div class="card-body">
+                               <div class="company-image">
+                                 <img src="{{ item.image.url }}" alt="company image" class="w-100"/>
+                               </div>
+                              <h4 class="text-center"> {{ item.name }} </h4>
+                            </div>
+                          </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                 </div>
+          </div>
+     </div>
+     <div class="row-2">
+      <div class="col-md-12">
+           <br>
+           <h1 class="text-title">Search New Cars By cartype :</h1>
+           <div class="input-group mb-3">
+            <form  action="/searchcar/" method="post" >
+            {% csrf_token %}
+            <!-- <span class="input-group-text" id="basic-addon1">cartype</span> -->
+            <input type="text" name="cartype" class="form-control" placeholder="cartype" aria-label="cartype" aria-describedby="basic-addon1">
+              <br><button class="btn btn-success" type="submit">Submit form</button>
+             </div>
+            </form>
+          </div>
+           <hr>
+
+            <div class="container-2">
+                <br><br>
+                <h2 class="display-4" style="color:rgb(255, 255, 255); border-bottom: 2px solid whitesmoke;">Workers Report</h2>
+                <hr style="color:rgb(246, 246, 246);" >
+                <table class="table table-bordered table-hover">
+                    <tr style="background-color:rgb(225, 217, 212)">
+                        <th>car sr.no</th>
+                        <th>company</th>
+                        <th>Name</th>
+                        <th>company</th>
+                        <th>photo</th>
+                        <th>No.wheel</th>
+                        <th>engine</th>
+                        <th>Petroltype</th>
+                        <th>cartype</th>
+                        <th>price</th>
+                        <th>last-edit</th>
+                    </tr>
+    
+                    {% for rec in list %}
+                    <tr id="tbl">
+                        {% for col in rec %}
+                        <td>{{col}}</td>
+                        {%endfor%}
+                    </tr>
+                    {%endfor%}
+    
+                </table>
+            </div>
+
+
+<!-- 
+            <div class="container-2">
+              <div class="row-3">
+                   <div class="col-md-12">
+                        <br>
+                        <h1 class="text-title">Search New Cars By Brand :</h1>
+                        <hr>
+                           <div class="row">
+                             {% for item in list %}
+                             <div class="col-md-3">
+                                 <div class= "card">
+                                     <div class="card-body">
+                                      <h1>{{ item.name }}</h1>
+                                      <h1>{{ item.cartype }}</h1>
+                                        <div class="company-image">
+                                          <img src="{{ item.image.url }}" alt="company image" class="w-100"/>
+                                        </div>
+                                       <h4 class="text-center"> {{ item.name }} </h4>
+                                       <h4 class="text-center"> {{ item.cartype }} </h4>
+                                     </div>
+                                 </div>
+                             </div>
+                             {% endfor %}
+                          </div>
+                   </div>
+              </div> -->
+              <!-- <div class="row">
+                {% for item in company %}
+                <div class="col-md-3">
+                    <div class= "card">
+                      <a href="{% url 'companyview' item.slug %}" style="text-decoration: none; color: rgb(5, 92, 92)">
+                        <div class="card-body">hello</div>
+                      </a>
+                    </div>
+                </div>
+                {% endfor %}
+             </div> -->
+      </div>
+ </div>
+</div>
+<style>
+  .container h1{
+          padding: 2px;
+          padding-left: 15px;
+          background-color: rgb(198, 249, 249);
+          border: 2px solid teal;
+          border-radius: 5px;
+  }
+  .text-title{
+    color: rgb(20, 78, 78);
+  }
+ .card{
+  border: 2px solid teal;
+  background-color: rgb(198, 249, 249);
+ }
+ .text-center{
+  padding-top: 20px;
+ }
+ .row-2{
+  border: 2px solid gray;
+ }
+  
+</style>
+
+    
+{% endblock content %}
